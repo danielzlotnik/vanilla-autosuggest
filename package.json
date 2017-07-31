@@ -1,0 +1,20 @@
+{
+  "name": "vanilla-autosuggest",
+  "main": "server.js",
+  "author": "daniel zlotnik",
+  "version": "0.0.1",
+  "description": "vanilla autosuggest",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "scripts": {
+    "bundle": "node bundle.js"
+  },
+  "devDependencies": {
+    "clean-css": "4.1.7",
+    "uglify-js": "3.0.27"
+  }
+}

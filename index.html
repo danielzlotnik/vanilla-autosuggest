@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Vanilla autosuggest</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
+    <link href='/src/assets/styles/style.css' rel='stylesheet'>
+</head>
+<body>
+<div id='autosuggest-wrapper'></div>
+<script src="src/js/script.js"></script>
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/src/assets/data/cities.json";
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            var cities = JSON.parse(this.responseText);
+            new Autosuggest(
+                {
+                    data: cities
+                }
+            )
+        }
+    };
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+</script>
+</body>
+</html>
