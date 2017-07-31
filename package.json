@@ -15,6 +15,8 @@
   },
   "devDependencies": {
     "clean-css": "4.1.7",
-    "uglify-js": "3.0.27"
+    "uglify-js": "3.0.27",
+    "express": "4.13.4",
+    "path": "0.12.7"
   }
 }
