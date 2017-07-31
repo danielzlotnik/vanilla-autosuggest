@@ -79,6 +79,11 @@ function Autosuggest(props) {
         return o;
     }
 
+    function suggestionIndexById(id) {
+        if (!id) return -1;
+        return parseInt(id.split('-')[1]);
+    }
+
     var suggestionsWrapper = createElement(
         {
             tag: 'div',
@@ -103,8 +108,8 @@ function Autosuggest(props) {
     self.focusedSuggestionId = undefined;
     self.suggestionsCount = 0;
 
-    function renderSuggestion(suggestion) {
-        return self.displayProperty ? getObjectByStringProperty(suggestion, self.displayProperty) : suggestion;
+    function renderSuggestion(suggestion, value) {
+        return emphasizeValue(suggestion, value);
     }
 
     function emphasizeValue(suggestionHtml, value) {
@@ -126,7 +131,7 @@ function Autosuggest(props) {
                     className: classNames.suggestion
                 }
             );
-            suggestionElement.innerHTML = emphasizeValue(self.renderSuggestion(self.suggestions[i]), value);
+            suggestionElement.innerHTML = self.renderSuggestion(self.suggestions[i], value);
             suggestionsWrapper.appendChild(suggestionElement);
         }
         autosuggestWrapper.appendChild(suggestionsWrapper);
@@ -136,7 +141,7 @@ function Autosuggest(props) {
         var currentIndex = -1;
         var nextIndex;
         if (self.focusedSuggestionId) {
-            currentIndex = parseInt(self.focusedSuggestionId.split('-')[1]);
+            currentIndex = suggestionIndexById(self.focusedSuggestionId);
         }
         if (currentIndex === -1) {
             if (isUp) {
@@ -159,9 +164,10 @@ function Autosuggest(props) {
 
     function selectSuggestion() {
         var target = document.getElementById(self.focusedSuggestionId);
+        var index = suggestionIndexById(self.focusedSuggestionId);
         if (!target) return;
         if (self.onSuggestionSelection) {
-            self.onSuggestionSelection();
+            input.value = self.onSuggestionSelection(self.suggestions[index]);
         }
         else {
             input.value = target.innerText;
@@ -187,6 +193,7 @@ function Autosuggest(props) {
         var result = [];
         if (!value) return result;
         self.data.forEach(function(item) {
+            item = self.displayProperty ? getObjectByStringProperty(item, self.displayProperty) : item;
             if (item.toLowerCase().indexOf(value.toLowerCase()) > -1) result.push(item);
         });
         return result;
