@@ -4,6 +4,9 @@ const { minify } = require("uglify-js");
 const cleanCSS = require('clean-css');
 
 const distPath = join(__dirname, 'dist') + '/';
+if (!fs.existsSync(distPath)){
+    fs.mkdirSync(distPath);
+}
 const stylesPath = join(__dirname, 'src', 'assets', 'styles') + '/';
 const jsPath = join(__dirname, 'src', 'js') + '/';
 
