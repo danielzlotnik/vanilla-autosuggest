@@ -113,9 +113,7 @@ function Autosuggest(props) {
     }
 
     function emphasizeValue(suggestionHtml, value) {
-        if (!suggestionHtml) return;
-        var regex = new RegExp(value, 'ig');
-        return suggestionHtml.replace(regex, '<strong>' + value + '</strong>');
+        return suggestionHtml ? suggestionHtml.replace(new RegExp(value, 'ig'), '<strong>' + value + '</strong>') : '';
     }
 
     function charKeyUp(value) {

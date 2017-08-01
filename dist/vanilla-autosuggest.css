@@ -1,0 +1,38 @@
+#autosuggest-wrapper {
+    max-width: 300px;
+    color: #616161;
+    font-size: 14px;
+    font-family: 'Lato';
+}
+#autosuggest-input {
+    border: 1px solid #898989;
+    border-radius: 4px;
+    padding: 6px 0;
+    width: 300px;
+}
+#autosuggest-input:focus {
+    border-color: #f9a9a9;
+    outline: none;
+}
+#suggestions-wrapper {
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    width: 100%;
+}
+.suggestion {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.suggestion * {
+    pointer-events: none;
+}
+.suggestion:last-child {
+    border-bottom: none;
+}
+.suggestion.focused {
+    background: #f9a9a9;
+    font-weight: bold;
+}
+.bold {
+    font-weight: 700;
+}
