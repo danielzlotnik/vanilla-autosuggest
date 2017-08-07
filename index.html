@@ -3,6 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <title>Vanilla autosuggest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
     <link href='src/assets/styles/style.css' rel='stylesheet'>
@@ -727,11 +728,9 @@
             flex-direction: column;
             height: 100vh;
             position: fixed;
+            transition: width 0.3s linear;
         }
         nav a {
-            -webkit-transition: text-shadow 0.2s linear;
-            -moz-transition: text-shadow 0.2s linear;
-            -o-transition: text-shadow 0.2s linear;
             transition: text-shadow 0.2s linear;
             color: white;
             font-size: 16px;
@@ -773,7 +772,6 @@
             margin-left: 230px;
             width: calc(100vw - 230px);
         }
-
         .code-container {
             background: #292929;
             color: #ffffff;
@@ -784,26 +782,8 @@
             height: 100vh;
             overflow: auto;
         }
-
         pre {
             padding: 20px;
-        }
-
-        .redcode {
-            color: #d54f66;
-        }
-        .bluecode {
-            color: #1ec7e5;
-        }
-        .greencode {
-            color: #3fad54;
-        }
-        .purplecode {
-            color: #f076e3;
-        }
-        .comment {
-            font-size: 14px;
-            line-height: 23px;
         }
         .example {
             opacity: 0;
@@ -817,10 +797,67 @@
         * {
             transition: opacity 0.3s linear;
         }
+        #burger-menu-icon {
+            visibility: hidden;
+            z-index: 0;
+        }
+        @media screen and (max-width: 920px) {
+            #burger-menu-icon {
+                padding: 10px;
+                cursor: pointer;
+                position: fixed;
+                visibility: visible;
+                z-index: 3;
+            }
+            nav {
+                width: 0;
+                z-index: 0;
+            }
+            nav a {
+                visibility: hidden;
+            }
+            nav.open {
+                width: 230px;
+                z-index: 4;
+            }
+            nav.closing {
+                z-index: 4;
+            }
+            nav.open a {
+                visibility: visible;
+            }
+            .right-container {
+                margin-left: 52px;
+                width: calc(100vw - 52px);
+                z-index: 1;
+            }
+        }
+        @media screen and (max-width: 780px) {
+            .code-container {
+                display: none;
+            }
+            .right-container {
+                margin-left: 0;
+                width: 100vw;
+            }
+            .middle-container {
+                padding: 70px 0;
+            }
+        }
+        @media screen and (max-width: 350px) {
+            .input-wrapper {
+                max-width: 298px;
+            }
+            #autosuggest-input {
+                width: 250px;
+            }
+        }
     </style>
 </head>
 <body>
 <div id="wrapper">
+    <img id="burger-menu-icon" width="32" height="32"
+         src="src/assets/images/burger-menu.png"/>
     <nav id="nav">
         <a id="simple"><span class="active">Simple Data</span></a>
         <a id="complex"><span>Complex Data</span></a>
@@ -942,6 +979,8 @@
 <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span>
 </pre>
     </div>
+    </div>
+</div>
     <script src="src/js/script.js"></script>
     <script>
         // simple
@@ -1053,6 +1092,26 @@
             toggleExample('remove', previouslySelectedId);
             toggleExample('add', e.target.id);
             previouslySelectedId = e.target.id;
+            closeNav();
+        });
+
+        var burgerMenu = document.getElementById('burger-menu-icon');
+        burgerMenu.addEventListener('click', function (e) {
+            nav.classList.add('open');
+        });
+
+        function closeNav() {
+            nav.classList.remove('open');
+            nav.classList.add('closing');
+            setTimeout(function () {
+                nav.classList.remove('closing');
+            }, 300);
+        }
+
+        window.addEventListener('click', function (e) {
+            if (e.target !== burgerMenu && !nav.contains(e.target)) {
+                closeNav();
+            }
         });
     </script>
 </body>
