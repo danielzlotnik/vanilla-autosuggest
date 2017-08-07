@@ -717,6 +717,7 @@
         body {
             margin: 0;
             font-family: Lato;
+            overflow: hidden;
         }
         #wrapper {
             display: flex;
@@ -800,6 +801,8 @@
         #burger-menu-icon {
             visibility: hidden;
             z-index: 0;
+            width: 0;
+            height: 0;
         }
         @media screen and (max-width: 920px) {
             #burger-menu-icon {
@@ -808,6 +811,8 @@
                 position: fixed;
                 visibility: visible;
                 z-index: 3;
+                width: 32px;
+                height: 32px;
             }
             nav {
                 width: 0;
@@ -856,8 +861,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <img id="burger-menu-icon" width="32" height="32"
-         src="src/assets/images/burger-menu.png"/>
+    <img id="burger-menu-icon" src="src/assets/images/burger-menu.png"/>
     <nav id="nav">
         <a id="simple"><span class="active">Simple Data</span></a>
         <a id="complex"><span>Complex Data</span></a>

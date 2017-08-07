@@ -4,6 +4,8 @@ Light-weight, independant & highly customizable autosuggest.
 Less than 4k minified.
 Less than 1.5k gzipped.
 
+[Live examples](https://danielzlotnik.github.io/vanilla-autosuggest/)
+
 ## Getting Started
 Download minified JS and styles from /dist.
 
@@ -12,7 +14,7 @@ Clone the repository and use ``` node bundle.js ``` to bundle your customized co
 ### Prerequisites
 Node JS 6 and up for bundling (written in ES6)
 
-### Include
+### HTML Include
 ```
 <link rel="stylesheet" href="/dist/vanilla-autosuggest.min.css">
 
