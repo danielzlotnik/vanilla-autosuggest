@@ -7,12 +7,13 @@
 #autosuggest-input {
     border: 1px solid #898989;
     border-radius: 4px;
-    padding: 6px 0;
+    padding: 6px;
     width: 300px;
+    line-height: 24px;
+    outline: none;
 }
 #autosuggest-input:focus {
     border-color: #f9a9a9;
-    outline: none;
 }
 #suggestions-wrapper {
     border: 1px solid #e7e7e7;
