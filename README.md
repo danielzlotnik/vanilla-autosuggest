@@ -31,6 +31,8 @@ onSuggestionSelection  | function(suggestion)  | no | -
 maxSuggestions  | int  | no | 20
 renderSuggestion  | function(suggestion, value)  | no | ```suggestion.replace(new RegExp(value, 'ig'), '<strong>' + value + '</strong>');```
 displayProperty  | string  | no | -
+inputClasses  | string  | no | -
+placeholder  | string  | no | -
 
 
 ### Usage
