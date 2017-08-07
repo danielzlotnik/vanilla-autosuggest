@@ -5,28 +5,1055 @@
     <title>Vanilla autosuggest</title>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'>
-    <link href='/src/assets/styles/style.css' rel='stylesheet'>
+    <link href='src/assets/styles/style.css' rel='stylesheet'>
+    <style>
+        .country-name {
+            margin-left: 10px;
+        }
+        .country-code {
+            font-weight: 600;
+            float: right;
+        }
+        .flag {
+            background: url('src/assets/images/flags.png') no-repeat;
+            width: 16px;
+            height: 11px;
+            display: inline-block;
+        }
+        .ad {
+            background-position: -16px 0;
+        }
+        .ae {
+            background-position: -32px 0;
+        }
+        .af {
+            background-position: -48px 0;
+        }
+        .ag {
+            background-position: -64px 0;
+        }
+        .ai {
+            background-position: -80px 0;
+        }
+        .al {
+            background-position: -96px 0;
+        }
+        .am {
+            background-position: -112px 0;
+        }
+        .ao {
+            background-position: -128px 0;
+        }
+        .ar {
+            background-position: -144px 0;
+        }
+        .as {
+            background-position: -160px 0;
+        }
+        .at {
+            background-position: -176px 0;
+        }
+        .au {
+            background-position: -192px 0;
+        }
+        .aw {
+            background-position: -208px 0;
+        }
+        .az {
+            background-position: -224px 0;
+        }
+        .ba {
+            background-position: -240px 0;
+        }
+        .bb {
+            background-position: 0 -11px;
+        }
+        .bd {
+            background-position: -16px -11px;
+        }
+        .be {
+            background-position: -32px -11px;
+        }
+        .bf {
+            background-position: -48px -11px;
+        }
+        .bg {
+            background-position: -64px -11px;
+        }
+        .bh {
+            background-position: -80px -11px;
+        }
+        .bi {
+            background-position: -96px -11px;
+        }
+        .bj {
+            background-position: -112px -11px;
+        }
+        .bm {
+            background-position: -128px -11px;
+        }
+        .bn {
+            background-position: -144px -11px;
+        }
+        .bo {
+            background-position: -160px -11px;
+        }
+        .br {
+            background-position: -176px -11px;
+        }
+        .bs {
+            background-position: -192px -11px;
+        }
+        .bt {
+            background-position: -208px -11px;
+        }
+        .bw {
+            background-position: -224px -11px;
+        }
+        .by {
+            background-position: -240px -11px;
+        }
+        .bz {
+            background-position: 0 -22px;
+        }
+        .ca {
+            background-position: -16px -22px;
+        }
+        .cd {
+            background-position: -32px -22px;
+        }
+        .cf {
+            background-position: -48px -22px;
+        }
+        .cg {
+            background-position: -64px -22px;
+        }
+        .ch {
+            background-position: -80px -22px;
+        }
+        .ci {
+            background-position: -96px -22px;
+        }
+        .ck {
+            background-position: -112px -22px;
+        }
+        .cl {
+            background-position: -128px -22px;
+        }
+        .cm {
+            background-position: -144px -22px;
+        }
+        .cn {
+            background-position: -160px -22px;
+        }
+        .co {
+            background-position: -176px -22px;
+        }
+        .cr {
+            background-position: -192px -22px;
+        }
+        .cu {
+            background-position: -208px -22px;
+        }
+        .cv {
+            background-position: -224px -22px;
+        }
+        .cw {
+            background-position: -240px -22px;
+        }
+        .cy {
+            background-position: 0 -33px;
+        }
+        .cz {
+            background-position: -16px -33px;
+        }
+        .de {
+            background-position: -32px -33px;
+        }
+        .dj {
+            background-position: -48px -33px;
+        }
+        .dk {
+            background-position: -64px -33px;
+        }
+        .dm {
+            background-position: -80px -33px;
+        }
+        .do {
+            background-position: -96px -33px;
+        }
+        .dz {
+            background-position: -112px -33px;
+        }
+        .ec {
+            background-position: -128px -33px;
+        }
+        .ee {
+            background-position: -144px -33px;
+        }
+        .eg {
+            background-position: -160px -33px;
+        }
+        .er {
+            background-position: -176px -33px;
+        }
+        .es {
+            background-position: -192px -33px;
+        }
+        .et {
+            background-position: -208px -33px;
+        }
+        .fi {
+            background-position: -224px -33px;
+        }
+        .fj {
+            background-position: -240px -33px;
+        }
+        .fk {
+            background-position: 0 -44px;
+        }
+        .fm {
+            background-position: -16px -44px;
+        }
+        .fo {
+            background-position: -32px -44px;
+        }
+        .fr, .bl, .mf {
+            background-position: -48px -44px;
+        }
+        .ga {
+            background-position: -64px -44px;
+        }
+        .gb {
+            background-position: -80px -44px;
+        }
+        .gd {
+            background-position: -96px -44px;
+        }
+        .ge {
+            background-position: -112px -44px;
+        }
+        .gf {
+            background-position: -128px -44px;
+        }
+        .gh {
+            background-position: -144px -44px;
+        }
+        .gi {
+            background-position: -160px -44px;
+        }
+        .gl {
+            background-position: -176px -44px;
+        }
+        .gm {
+            background-position: -192px -44px;
+        }
+        .gn {
+            background-position: -208px -44px;
+        }
+        .gp {
+            background-position: -224px -44px;
+        }
+        .gq {
+            background-position: -240px -44px;
+        }
+        .gr {
+            background-position: 0 -55px;
+        }
+        .gt {
+            background-position: -16px -55px;
+        }
+        .gu {
+            background-position: -32px -55px;
+        }
+        .gw {
+            background-position: -48px -55px;
+        }
+        .gy {
+            background-position: -64px -55px;
+        }
+        .hk {
+            background-position: -80px -55px;
+        }
+        .hn {
+            background-position: -96px -55px;
+        }
+        .hr {
+            background-position: -112px -55px;
+        }
+        .ht {
+            background-position: -128px -55px;
+        }
+        .hu {
+            background-position: -144px -55px;
+        }
+        .id {
+            background-position: -160px -55px;
+        }
+        .ie {
+            background-position: -176px -55px;
+        }
+        .il {
+            background-position: -192px -55px;
+        }
+        .in {
+            background-position: -208px -55px;
+        }
+        .io {
+            background-position: -224px -55px;
+        }
+        .iq {
+            background-position: -240px -55px;
+        }
+        .ir {
+            background-position: 0 -66px;
+        }
+        .is {
+            background-position: -16px -66px;
+        }
+        .it {
+            background-position: -32px -66px;
+        }
+        .jm {
+            background-position: -48px -66px;
+        }
+        .jo {
+            background-position: -64px -66px;
+        }
+        .jp {
+            background-position: -80px -66px;
+        }
+        .ke {
+            background-position: -96px -66px;
+        }
+        .kg {
+            background-position: -112px -66px;
+        }
+        .kh {
+            background-position: -128px -66px;
+        }
+        .ki {
+            background-position: -144px -66px;
+        }
+        .km {
+            background-position: -160px -66px;
+        }
+        .kn {
+            background-position: -176px -66px;
+        }
+        .kp {
+            background-position: -192px -66px;
+        }
+        .kr {
+            background-position: -208px -66px;
+        }
+        .kw {
+            background-position: -224px -66px;
+        }
+        .ky {
+            background-position: -240px -66px;
+        }
+        .kz {
+            background-position: 0 -77px;
+        }
+        .la {
+            background-position: -16px -77px;
+        }
+        .lb {
+            background-position: -32px -77px;
+        }
+        .lc {
+            background-position: -48px -77px;
+        }
+        .li {
+            background-position: -64px -77px;
+        }
+        .lk {
+            background-position: -80px -77px;
+        }
+        .lr {
+            background-position: -96px -77px;
+        }
+        .ls {
+            background-position: -112px -77px;
+        }
+        .lt {
+            background-position: -128px -77px;
+        }
+        .lu {
+            background-position: -144px -77px;
+        }
+        .lv {
+            background-position: -160px -77px;
+        }
+        .ly {
+            background-position: -176px -77px;
+        }
+        .ma {
+            background-position: -192px -77px;
+        }
+        .mc {
+            background-position: -208px -77px;
+        }
+        .md {
+            background-position: -224px -77px;
+        }
+        .me {
+            background-position: -112px -154px;
+            height: 12px;
+        }
+        .mg {
+            background-position: 0 -88px;
+        }
+        .mh {
+            background-position: -16px -88px;
+        }
+        .mk {
+            background-position: -32px -88px;
+        }
+        .ml {
+            background-position: -48px -88px;
+        }
+        .mm {
+            background-position: -64px -88px;
+        }
+        .mn {
+            background-position: -80px -88px;
+        }
+        .mo {
+            background-position: -96px -88px;
+        }
+        .mp {
+            background-position: -112px -88px;
+        }
+        .mq {
+            background-position: -128px -88px;
+        }
+        .mr {
+            background-position: -144px -88px;
+        }
+        .ms {
+            background-position: -160px -88px;
+        }
+        .mt {
+            background-position: -176px -88px;
+        }
+        .mu {
+            background-position: -192px -88px;
+        }
+        .mv {
+            background-position: -208px -88px;
+        }
+        .mw {
+            background-position: -224px -88px;
+        }
+        .mx {
+            background-position: -240px -88px;
+        }
+        .my {
+            background-position: 0 -99px;
+        }
+        .mz {
+            background-position: -16px -99px;
+        }
+        .na {
+            background-position: -32px -99px;
+        }
+        .nc {
+            background-position: -48px -99px;
+        }
+        .ne {
+            background-position: -64px -99px;
+        }
+        .nf {
+            background-position: -80px -99px;
+        }
+        .ng {
+            background-position: -96px -99px;
+        }
+        .ni {
+            background-position: -112px -99px;
+        }
+        .nl, .bq {
+            background-position: -128px -99px;
+        }
+        .no {
+            background-position: -144px -99px;
+        }
+        .np {
+            background-position: -160px -99px;
+        }
+        .nr {
+            background-position: -176px -99px;
+        }
+        .nu {
+            background-position: -192px -99px;
+        }
+        .nz {
+            background-position: -208px -99px;
+        }
+        .om {
+            background-position: -224px -99px;
+        }
+        .pa {
+            background-position: -240px -99px;
+        }
+        .pe {
+            background-position: 0 -110px;
+        }
+        .pf {
+            background-position: -16px -110px;
+        }
+        .pg {
+            background-position: -32px -110px;
+        }
+        .ph {
+            background-position: -48px -110px;
+        }
+        .pk {
+            background-position: -64px -110px;
+        }
+        .pl {
+            background-position: -80px -110px;
+        }
+        .pm {
+            background-position: -96px -110px;
+        }
+        .pr {
+            background-position: -112px -110px;
+        }
+        .ps {
+            background-position: -128px -110px;
+        }
+        .pt {
+            background-position: -144px -110px;
+        }
+        .pw {
+            background-position: -160px -110px;
+        }
+        .py {
+            background-position: -176px -110px;
+        }
+        .qa {
+            background-position: -192px -110px;
+        }
+        .re {
+            background-position: -208px -110px;
+        }
+        .ro {
+            background-position: -224px -110px;
+        }
+        .rs {
+            background-position: -240px -110px;
+        }
+        .ru {
+            background-position: 0 -121px;
+        }
+        .rw {
+            background-position: -16px -121px;
+        }
+        .sa {
+            background-position: -32px -121px;
+        }
+        .sb {
+            background-position: -48px -121px;
+        }
+        .sc {
+            background-position: -64px -121px;
+        }
+        .sd {
+            background-position: -80px -121px;
+        }
+        .se {
+            background-position: -96px -121px;
+        }
+        .sg {
+            background-position: -112px -121px;
+        }
+        .sh {
+            background-position: -128px -121px;
+        }
+        .si {
+            background-position: -144px -121px;
+        }
+        .sk {
+            background-position: -160px -121px;
+        }
+        .sl {
+            background-position: -176px -121px;
+        }
+        .sm {
+            background-position: -192px -121px;
+        }
+        .sn {
+            background-position: -208px -121px;
+        }
+        .so {
+            background-position: -224px -121px;
+        }
+        .sr {
+            background-position: -240px -121px;
+        }
+        .ss {
+            background-position: 0 -132px;
+        }
+        .st {
+            background-position: -16px -132px;
+        }
+        .sv {
+            background-position: -32px -132px;
+        }
+        .sx {
+            background-position: -48px -132px;
+        }
+        .sy {
+            background-position: -64px -132px;
+        }
+        .sz {
+            background-position: -80px -132px;
+        }
+        .tc {
+            background-position: -96px -132px;
+        }
+        .td {
+            background-position: -112px -132px;
+        }
+        .tg {
+            background-position: -128px -132px;
+        }
+        .th {
+            background-position: -144px -132px;
+        }
+        .tj {
+            background-position: -160px -132px;
+        }
+        .tk {
+            background-position: -176px -132px;
+        }
+        .tl {
+            background-position: -192px -132px;
+        }
+        .tm {
+            background-position: -208px -132px;
+        }
+        .tn {
+            background-position: -224px -132px;
+        }
+        .to {
+            background-position: -240px -132px;
+        }
+        .tr {
+            background-position: 0 -143px;
+        }
+        .tt {
+            background-position: -16px -143px;
+        }
+        .tv {
+            background-position: -32px -143px;
+        }
+        .tw {
+            background-position: -48px -143px;
+        }
+        .tz {
+            background-position: -64px -143px;
+        }
+        .ua {
+            background-position: -80px -143px;
+        }
+        .ug {
+            background-position: -96px -143px;
+        }
+        .us {
+            background-position: -112px -143px;
+        }
+        .uy {
+            background-position: -128px -143px;
+        }
+        .uz {
+            background-position: -144px -143px;
+        }
+        .va {
+            background-position: -160px -143px;
+        }
+        .vc {
+            background-position: -176px -143px;
+        }
+        .ve {
+            background-position: -192px -143px;
+        }
+        .vg {
+            background-position: -208px -143px;
+        }
+        .vi {
+            background-position: -224px -143px;
+        }
+        .vn {
+            background-position: -240px -143px;
+        }
+        .vu {
+            background-position: 0 -154px;
+        }
+        .wf {
+            background-position: -16px -154px;
+        }
+        .ws {
+            background-position: -32px -154px;
+        }
+        .ye {
+            background-position: -48px -154px;
+        }
+        .za {
+            background-position: -64px -154px;
+        }
+        .zm {
+            background-position: -80px -154px;
+        }
+        .zw {
+            background-position: -96px -154px;
+        }
+    </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: Lato;
+        }
+        #wrapper {
+            display: flex;
+        }
+        nav {
+            width: 230px;
+            background: #616161;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: fixed;
+        }
+        nav a {
+            -webkit-transition: text-shadow 0.2s linear;
+            -moz-transition: text-shadow 0.2s linear;
+            -o-transition: text-shadow 0.2s linear;
+            transition: text-shadow 0.2s linear;
+            color: white;
+            font-size: 16px;
+            padding: 20px 45px;
+            cursor: pointer;
+        }
+        nav a:first-child {
+            margin-top: 40px;
+        }
+        nav a:hover  {
+            text-shadow: 0 0 2px white;
+        }
+        nav a span {
+            padding-bottom: 5px;
+            pointer-events: none;
+        }
+        nav a span.active {
+            border-bottom: 2px solid white;
+        }
+        #autosuggest-input {
+            padding: 5px 15px 5px 31px;
+            width: 290px;
+            background: url(src/assets/images/magnifier.png) no-repeat 10px center #fff;
+            background-size: 15px;
+        }
+
+        .input-wrapper {
+            max-width: 338px;
+            margin: auto;
+        }
+
+        .middle-container {
+            padding: 53px 20px;
+            flex: 1;
+        }
+
+        .right-container {
+            display: inline-flex;
+            margin-left: 230px;
+            width: calc(100vw - 230px);
+        }
+
+        .code-container {
+            background: #292929;
+            color: #ffffff;
+            font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        pre {
+            padding: 20px;
+        }
+
+        .redcode {
+            color: #d54f66;
+        }
+        .bluecode {
+            color: #1ec7e5;
+        }
+        .greencode {
+            color: #3fad54;
+        }
+        .purplecode {
+            color: #f076e3;
+        }
+        .comment {
+            font-size: 14px;
+            line-height: 23px;
+        }
+        .example {
+            opacity: 0;
+            position: absolute;
+            left: -100%;
+        }
+        .example.active {
+            opacity: 1;
+            position: static;
+        }
+        * {
+            transition: opacity 0.3s linear;
+        }
+    </style>
 </head>
 <body>
-<div id='autosuggest-wrapper'></div>
-<script src="src/js/script.js"></script>
-<script>
-    var xmlhttp = new XMLHttpRequest();
-    var url = "/src/assets/data/cities.json";
+<div id="wrapper">
+    <nav id="nav">
+        <a id="simple"><span class="active">Simple Data</span></a>
+        <a id="complex"><span>Complex Data</span></a>
+        <a id="custom"><span>Custom Render</span></a>
+    </nav>
+    <div class="right-container">
+        <div class="middle-container">
+            <div class="input-wrapper example active" id='input-simple'></div>
+            <div class="input-wrapper example" id='input-complex'></div>
+            <div class="input-wrapper example" id='input-custom'></div>
+        </div>
+        <div class="code-container">
+<!-- example code - simple data -->
+<pre class="example active" id="code-simple"><span style='color:#9999a9; '>// data format</span>
+<span style='color:#d2cd86; '>[</span>
+    <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Aberdeen</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Abilene</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Akron</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Albany</span><span style='color:#02d045; '>"</span>
+<span style='color:#d2cd86; '>]</span>
 
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var cities = JSON.parse(this.responseText);
-            new Autosuggest(
-                {
-                    data: cities
-                }
-            )
+<span style='color:#e66170; font-weight:bold; '>new</span> Autosuggest<span style='color:#d2cd86; '>(</span><span style='color:#b060b0; '>{</span>
+    data<span style='color:#b060b0; '>:</span> cities<span style='color:#d2cd86; '>,</span>
+    mountSelector<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>#input-simple</span><span style='color:#02d045; '>'</span><span style='color:#d2cd86; '>,</span>
+    maxSuggestions<span style='color:#b060b0; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#d2cd86; '>,</span>
+    placeholder<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>City</span><span style='color:#02d045; '>'</span>
+<span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span>
+</pre>
+
+<!-- example code - complex data -->
+<pre class="example" id="code-complex"><span style='color:#9999a9; '>// data format</span>
+<span style='color:#d2cd86; '>[</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>country</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#b060b0; '>{</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Afghanistan</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AF</span><span style='color:#02d045; '>"</span>
+        <span style='color:#b060b0; '>}</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>country</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#b060b0; '>{</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Albania</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AL</span><span style='color:#02d045; '>"</span>
+        <span style='color:#b060b0; '>}</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>country</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#b060b0; '>{</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Algeria</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>DZ</span><span style='color:#02d045; '>"</span>
+        <span style='color:#b060b0; '>}</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>country</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#b060b0; '>{</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>American Samoa</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+            <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AS</span><span style='color:#02d045; '>"</span>
+        <span style='color:#b060b0; '>}</span>
+    <span style='color:#b060b0; '>}</span>
+<span style='color:#d2cd86; '>]</span>
+
+<span style='color:#e66170; font-weight:bold; '>new</span> Autosuggest<span style='color:#d2cd86; '>(</span><span style='color:#b060b0; '>{</span>
+    mountSelector<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>#input-complex</span><span style='color:#02d045; '>'</span><span style='color:#d2cd86; '>,</span>
+    data<span style='color:#b060b0; '>:</span> countries<span style='color:#d2cd86; '>,</span>
+    displayProperty<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>country.name</span><span style='color:#02d045; '>'</span><span style='color:#d2cd86; '>,</span>
+    maxSuggestions<span style='color:#b060b0; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#d2cd86; '>,</span>
+    placeholder<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>Country</span><span style='color:#02d045; '>'</span>
+<span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span>
+</pre>
+<!-- example code - custom render -->
+<pre class="example" id="code-custom"><span style='color:#9999a9; '>// data format</span>
+<span style='color:#d2cd86; '>[</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Afghanistan</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AF</span><span style='color:#02d045; '>"</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Albania</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AL</span><span style='color:#02d045; '>"</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>Algeria</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>DZ</span><span style='color:#02d045; '>"</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>,</span>
+    <span style='color:#b060b0; '>{</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>name</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>American Samoa</span><span style='color:#02d045; '>"</span><span style='color:#d2cd86; '>,</span>
+        <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>code</span><span style='color:#02d045; '>"</span><span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>"</span><span style='color:#00c4c4; '>AS</span><span style='color:#02d045; '>"</span>
+    <span style='color:#b060b0; '>}</span>
+<span style='color:#d2cd86; '>]</span>
+
+<span style='color:#e66170; font-weight:bold; '>function</span> renderSuggestion<span style='color:#d2cd86; '>(</span>suggestion<span style='color:#d2cd86; '>,</span> value<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+    <span style='color:#e66170; font-weight:bold; '>return</span> <span style='color:#d2cd86; '>(</span>
+        <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;div class="country-suggestion"></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span>
+        <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;span class="flag </span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span> suggestion<span style='color:#d2cd86; '>.</span>code<span style='color:#d2cd86; '>.</span><span style='color:#e66170; font-weight:bold; '>toLowerCase</span><span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#d2cd86; '>+</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>">&lt;/span></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span>
+        <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;span class="country-name"></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span> suggestion<span style='color:#d2cd86; '>.</span>name <span style='color:#d2cd86; '>+</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;/span></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span>
+        <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;span class="country-code"></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span> suggestion<span style='color:#d2cd86; '>.</span>code <span style='color:#d2cd86; '>+</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;/span></span><span style='color:#02d045; '>'</span> <span style='color:#d2cd86; '>+</span>
+        <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>&lt;/div></span><span style='color:#02d045; '>'</span>
+    <span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<span style='color:#b060b0; '>}</span>
+
+<span style='color:#e66170; font-weight:bold; '>function</span> getSuggestions<span style='color:#d2cd86; '>(</span>value<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+    <span style='color:#e66170; font-weight:bold; '>if</span> <span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>!</span>data<span style='color:#d2cd86; '>)</span> <span style='color:#e66170; font-weight:bold; '>return</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#e66170; font-weight:bold; '>let</span> result <span style='color:#d2cd86; '>=</span> <span style='color:#d2cd86; '>[</span><span style='color:#d2cd86; '>]</span><span style='color:#b060b0; '>;</span>
+    data<span style='color:#d2cd86; '>.</span>forEach<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>function</span><span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>item</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+        <span style='color:#e66170; font-weight:bold; '>if</span> <span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>item</span><span style='color:#d2cd86; '>.</span>name<span style='color:#d2cd86; '>.</span><span style='color:#e66170; font-weight:bold; '>toLowerCase</span><span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#d2cd86; '>.</span><span style='color:#e66170; font-weight:bold; '>indexOf</span><span style='color:#d2cd86; '>(</span>value<span style='color:#d2cd86; '>.</span><span style='color:#e66170; font-weight:bold; '>toLowerCase</span><span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#d2cd86; '>)</span> <span style='color:#d2cd86; '>></span> <span style='color:#d2cd86; '>-</span><span style='color:#008c00; '>1</span><span style='color:#d2cd86; '>)</span> result<span style='color:#d2cd86; '>.</span>push<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>item</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#e66170; font-weight:bold; '>return</span> result<span style='color:#b060b0; '>;</span>
+<span style='color:#b060b0; '>}</span>
+
+<span style='color:#e66170; font-weight:bold; '>function</span> onSuggestionSelection<span style='color:#d2cd86; '>(</span>suggestion<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span>
+    console<span style='color:#d2cd86; '>.</span><span style='color:#e66170; font-weight:bold; '>log</span><span style='color:#d2cd86; '>(</span>JSON<span style='color:#d2cd86; '>.</span>stringify<span style='color:#d2cd86; '>(</span>suggestion<span style='color:#d2cd86; '>)</span> <span style='color:#d2cd86; '>+</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '> selected</span><span style='color:#02d045; '>'</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+    <span style='color:#e66170; font-weight:bold; '>return</span> suggestion<span style='color:#d2cd86; '>.</span>name<span style='color:#b060b0; '>;</span>
+<span style='color:#b060b0; '>}</span>
+
+<span style='color:#e66170; font-weight:bold; '>new</span> Autosuggest<span style='color:#d2cd86; '>(</span><span style='color:#b060b0; '>{</span>
+    mountSelector<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>#input-custom</span><span style='color:#02d045; '>'</span><span style='color:#d2cd86; '>,</span>
+    getSuggestions<span style='color:#b060b0; '>:</span> getSuggestions<span style='color:#d2cd86; '>,</span>
+    renderSuggestion<span style='color:#b060b0; '>:</span> renderSuggestion<span style='color:#d2cd86; '>,</span>
+    onSuggestionSelection<span style='color:#b060b0; '>:</span> onSuggestionSelection<span style='color:#d2cd86; '>,</span>
+    maxSuggestions<span style='color:#b060b0; '>:</span> <span style='color:#008c00; '>10</span><span style='color:#d2cd86; '>,</span>
+    placeholder<span style='color:#b060b0; '>:</span> <span style='color:#02d045; '>'</span><span style='color:#00c4c4; '>Country</span><span style='color:#02d045; '>'</span>
+<span style='color:#b060b0; '>}</span><span style='color:#d2cd86; '>)</span>
+</pre>
+    </div>
+    <script src="src/js/script.js"></script>
+    <script>
+        // simple
+        var xmlhttp = new XMLHttpRequest();
+        var url = "src/assets/data/cities.json";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var cities = JSON.parse(this.responseText);
+                new Autosuggest(
+                    {
+                        data: cities,
+                        mountSelector: '#input-simple',
+                        maxSuggestions: 10,
+                        placeholder: 'City'
+                    }
+                )
+            }
+        };
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        // complex data
+        var complexXmlhttp = new XMLHttpRequest();
+        var complexUrl = "src/assets/data/countries-nested.json";
+
+        complexXmlhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var countries = JSON.parse(this.responseText);
+                new Autosuggest(
+                    {
+                        mountSelector: '#input-complex',
+                        data: countries,
+                        displayProperty: 'country.name',
+                        maxSuggestions: 10,
+                        placeholder: 'Country'
+                    }
+                )
+            }
+        };
+
+        complexXmlhttp.open("GET", complexUrl, true);
+        complexXmlhttp.send();
+
+        // custom-render
+        var customXmlhttp = new XMLHttpRequest();
+        var customUrl = "src/assets/data/countries.json";
+
+        function renderSuggestion(suggestion, value) {
+            return (
+                '<div class="country-suggestion">' +
+                '<span class="flag ' + suggestion.code.toLowerCase() + '"></span>' +
+                '<span class="country-name">' + suggestion.name + '</span>' +
+                '<span class="country-code">' + suggestion.code + '</span>' +
+                '</div>'
+            );
         }
-    };
 
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-</script>
+        var data;
+
+        function getSuggestions(value) {
+            if (!data) return;
+            let result = [];
+            data.forEach(function(item) {
+                if (item.name.toLowerCase().indexOf(value.toLowerCase()) > -1) result.push(item);
+            });
+            return result;
+        }
+
+        function onSuggestionSelection(suggestion) {
+            console.log(JSON.stringify(suggestion) + ' selected');
+            return suggestion.name;
+        }
+
+        customXmlhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                data = JSON.parse(this.responseText);
+                new Autosuggest(
+                    {
+                        mountSelector: '#input-custom',
+                        getSuggestions: getSuggestions,
+                        renderSuggestion: renderSuggestion,
+                        onSuggestionSelection: onSuggestionSelection,
+                        maxSuggestions: 10,
+                        placeholder: 'Country'
+                    }
+                )
+            }
+        };
+
+        customXmlhttp.open("GET", customUrl, true);
+        customXmlhttp.send();
+        
+        // add navigation listener
+        var previouslySelectedId = 'simple';
+        var inputPrefix = 'input-';
+        var codeExamplePrefix = 'code-';
+
+        function toggleExample(method, id) {
+            if (!method || !id) return;
+            document.getElementById(id).firstChild.classList[method]('active');
+            document.getElementById(inputPrefix + id).classList[method]('active');
+            document.getElementById(codeExamplePrefix + id).classList[method]('active');
+        }
+
+        var nav = document.getElementById('nav');
+        nav.addEventListener('click', function (e) {
+            toggleExample('remove', previouslySelectedId);
+            toggleExample('add', e.target.id);
+            previouslySelectedId = e.target.id;
+        });
+    </script>
 </body>
 </html>

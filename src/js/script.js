@@ -25,6 +25,8 @@ function Autosuggest(props) {
     this.maxSuggestions = props.maxSuggestions || 20;
     this.renderSuggestion = props.renderSuggestion || renderSuggestion;
     this.displayProperty = props.displayProperty;
+    this.placeholder = props.placeholder || '';
+    this.inputClasses = props.inputClasses || '';
 
     var self = this;
 
@@ -94,7 +96,9 @@ function Autosuggest(props) {
     var input = createElement(
         {
             tag: 'input',
-            id: ids.input
+            id: ids.input,
+            placeholder: self.placeholder,
+            className: self.inputClasses
         }
     );
 
